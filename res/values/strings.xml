@@ -11,4 +11,12 @@
     <string name="default_command">:FAKE_COMMAND</string>
     <string name="host">Host</string>
     <string name="port">Port</string>
+    <string-array name="Locations">
+        <item >CL50 - Class of 1950 Lecture Hall</item>
+        <item >EE - Electrical Engineering Building</item>
+        <item >LWSN - Lawson Computer Science Building</item>
+        <item >PMU - Purdue Memorial Union</item>
+        <item >PUSH - Purdue University Student Health Center</item>
+        <item >* - Any one of the locations above</item>
+    </string-array>
 </resources>

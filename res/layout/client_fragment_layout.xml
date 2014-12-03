@@ -64,11 +64,10 @@
         android:id="@+id/radioButton1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/bu_submit"
         android:layout_below="@+id/textView2"
-        android:layout_marginRight="21dp"
-        android:text="RadioButton"
-        />
+        android:layout_toLeftOf="@+id/editText1"
+        android:layout_marginTop = "16dp"
+        android:text="I am a requester. Match me with volunteer only." />
 
     <RadioButton
         android:id="@+id/radioButton2"
@@ -77,15 +76,15 @@
         android:layout_alignLeft="@+id/radioButton1"
         android:layout_below="@+id/radioButton1"
         android:layout_marginTop="16dp"
-        android:text="RadioButton" />
+        android:text="I am a volunteer. Don't match me with another volunteer." />
 
     <RadioButton
         android:id="@+id/radioButton3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/radioButton2"
-        android:layout_below="@+id/radioButton2"
-        android:layout_marginTop="15dp"
-        android:text="RadioButton" />
+        android:layout_alignRight="@+id/radioButton2"
+        android:layout_below="@+id/textView2"
+        android:layout_marginTop="215dp"
+        android:text="I have no preference being a requester or a volunteer." />
 
 </RelativeLayout>
