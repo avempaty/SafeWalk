@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.EditText;
 
 /**
  * This fragment is the "page" where the user inputs information about the
@@ -19,7 +20,8 @@ public class ClientFragment extends Fragment implements OnClickListener {
 	 * Activity which have to receive callbacks.
 	 */
 	private SubmitCallbackListener activity;
-
+	
+	
 	/**
 	 * Creates a ProfileFragment
 	 * 
@@ -56,7 +58,7 @@ public class ClientFragment extends Fragment implements OnClickListener {
 		 * Button.
 		 */
 		view.findViewById(R.id.bu_submit).setOnClickListener(this);
-
+		
 		// TODO: import your Views from the layout here. See example in
 		// ServerFragment.
 

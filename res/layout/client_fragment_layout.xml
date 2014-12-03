@@ -10,12 +10,37 @@
 
     <!-- TODO your layout here -->
 
+    <EditText
+        android:id="@+id/editText1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/textView1"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:ems="10"
+        android:inputType="textPersonName" >
+
+        <requestFocus />
+    </EditText>
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="47dp"
+        android:layout_toLeftOf="@+id/editText1"
+        android:text="Name"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textSize="@dimen/text_size_small" />
+
     <Button
         android:id="@+id/bu_submit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/margin_bigline"
+        android:layout_marginBottom="46dp"
         android:enabled="true"
         android:gravity="center"
         android:minHeight="60dp"
@@ -23,5 +48,44 @@
         android:onClick="onSubmit"
         android:padding="@dimen/padding"
         android:text="@string/submit" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView1"
+        android:layout_below="@+id/editText1"
+        android:layout_marginTop="26dp"
+        android:text="Preferences"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textSize="@dimen/text_size_small" />
+
+    <RadioButton
+        android:id="@+id/radioButton1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/bu_submit"
+        android:layout_below="@+id/textView2"
+        android:layout_marginRight="21dp"
+        android:text="RadioButton"
+        />
+
+    <RadioButton
+        android:id="@+id/radioButton2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/radioButton1"
+        android:layout_below="@+id/radioButton1"
+        android:layout_marginTop="16dp"
+        android:text="RadioButton" />
+
+    <RadioButton
+        android:id="@+id/radioButton3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/radioButton2"
+        android:layout_below="@+id/radioButton2"
+        android:layout_marginTop="15dp"
+        android:text="RadioButton" />
 
 </RelativeLayout>
