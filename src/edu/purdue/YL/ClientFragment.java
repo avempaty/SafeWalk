@@ -23,6 +23,7 @@ public class ClientFragment extends Fragment implements OnClickListener {
 	 * Activity which have to receive callbacks.
 	 */
 	private SubmitCallbackListener activity;
+	Spinner fromSpinner, toSpinner;
 	
 	
 	/**
@@ -65,14 +66,8 @@ public class ClientFragment extends Fragment implements OnClickListener {
 		// TODO: import your Views from the layout here. See example in
 		// ServerFragment.
 		
-		Spinner spinner = (Spinner) view.findViewById(R.id.fromSpinner);
-		// Create an ArrayAdapter using the string array and a default spinner layout
-		ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource((Context)view,
-		        R.array.Locations,android.R.layout.simple_spinner_item);
-		// Specify the layout to use when the list of choices appears
-		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-		// Apply the adapter to the spinner
-		spinner.setAdapter(adapter);
+		fromSpinner = (Spinner) view.findViewById(R.id.fromSpinner);
+		toSpinner = (Spinner) view.findViewById(R.id.toSpinner);
 
 		return view;
 	}
