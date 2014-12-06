@@ -1,12 +1,15 @@
 package edu.purdue.YL;
 
 import android.app.Fragment;
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.Spinner;
 
 /**
  * This fragment is the "page" where the user inputs information about the
@@ -61,6 +64,15 @@ public class ClientFragment extends Fragment implements OnClickListener {
 		
 		// TODO: import your Views from the layout here. See example in
 		// ServerFragment.
+		
+		Spinner spinner = (Spinner) view.findViewById(R.id.fromSpinner);
+		// Create an ArrayAdapter using the string array and a default spinner layout
+		ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource((Context)view,
+		        R.array.Locations,android.R.layout.simple_spinner_item);
+		// Specify the layout to use when the list of choices appears
+		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		// Apply the adapter to the spinner
+		spinner.setAdapter(adapter);
 
 		return view;
 	}

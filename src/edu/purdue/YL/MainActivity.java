@@ -119,7 +119,11 @@ public class MainActivity extends Activity implements SubmitCallbackListener,
 		int port = this.serverFragment.getPort(Integer.parseInt(getResources()
 				.getString(R.string.default_port)));
 		// TODO: sanity check the results of the previous two dialogs
-
+		
+		if(!checkHost(host))
+			return;
+		if(!checkPort(port))
+			return;
 		// TODO: Need to get command from client fragment
 		String command = this.getResources()
 				.getString(R.string.default_command);
@@ -148,4 +152,26 @@ public class MainActivity extends Activity implements SubmitCallbackListener,
 		onRightClick(null);
 	}
 
+	private boolean checkHost(String str) {
+		String[] data = str.split(".");
+		if (data.length != 4)
+			return false;
+		for (String a : data) {
+			try {
+				int temp = Integer.parseInt(a);
+				if (!(temp >= 0 && temp <= 255))
+					return false;
+			} catch (Exception ex) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	private boolean checkPort(int port) {
+		if (port < 1 || port > 65535)
+			return false;
+		else
+			return true;
+	}
 }

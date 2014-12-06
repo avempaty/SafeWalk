@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 
 /**
@@ -23,6 +24,8 @@ public class ServerFragment extends Fragment {
 	 * EditText where the user enter the port address.
 	 */
 	private EditText port;
+	
+	private Button serverButton;
 
 	/**
 	 * Creates a ServerFragment
@@ -50,6 +53,7 @@ public class ServerFragment extends Fragment {
 
 		this.host = (EditText) view.findViewById(R.id.et_host);
 		this.port = (EditText) view.findViewById(R.id.et_port);
+		this.serverButton = (Button) view.findViewById(R.id.serverButton);
 
 		return view;
 	}

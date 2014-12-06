@@ -23,14 +23,52 @@
         <requestFocus />
     </EditText>
 
+    <RadioButton
+        android:id="@+id/radioButton1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/editText1"
+        android:layout_below="@+id/textView2"
+        android:layout_marginTop="16dp"
+        android:text="I am a requester. Match me with volunteer only." />
+
+    <RadioButton
+        android:id="@+id/radioButton3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/radioButton2"
+        android:layout_below="@+id/radioButton2"
+        android:layout_marginTop="27dp"
+        android:text="I have no preference being a requester or a volunteer." />
+
+    <RadioButton
+        android:id="@+id/radioButton2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/radioButton1"
+        android:layout_below="@+id/radioButton1"
+        android:layout_marginTop="35dp"
+        android:text="I am a volunteer. Don&apos;t match me with another volunteer." />
+
     <TextView
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/radioButton1"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="47dp"
-        android:layout_toLeftOf="@+id/editText1"
+        android:layout_marginTop="26dp"
         android:text="Name"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textSize="@dimen/text_size_small" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/radioButton1"
+        android:layout_below="@+id/editText1"
+        android:layout_marginTop="23dp"
+        android:text="Preferences"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:textSize="@dimen/text_size_small" />
 
@@ -38,9 +76,8 @@
         android:id="@+id/bu_submit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/editText1"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="46dp"
         android:enabled="true"
         android:gravity="center"
         android:minHeight="60dp"
@@ -49,42 +86,21 @@
         android:padding="@dimen/padding"
         android:text="@string/submit" />
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
+    <Spinner
+        android:id="@+id/fromSpinner"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView1"
-        android:layout_below="@+id/editText1"
-        android:layout_marginTop="26dp"
-        android:text="Preferences"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textSize="@dimen/text_size_small" />
+        android:layout_alignLeft="@+id/radioButton3"
+        android:layout_below="@+id/radioButton3"
+        android:layout_marginTop="22dp"
+        android:entries="@array/Locations" />
 
-    <RadioButton
-        android:id="@+id/radioButton1"
-        android:layout_width="wrap_content"
+    <Spinner
+        android:id="@+id/toSpinner"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView2"
-        android:layout_toLeftOf="@+id/editText1"
-        android:layout_marginTop = "16dp"
-        android:text="I am a requester. Match me with volunteer only." />
-
-    <RadioButton
-        android:id="@+id/radioButton2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/radioButton1"
-        android:layout_below="@+id/radioButton1"
-        android:layout_marginTop="16dp"
-        android:text="I am a volunteer. Don't match me with another volunteer." />
-
-    <RadioButton
-        android:id="@+id/radioButton3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/radioButton2"
-        android:layout_below="@+id/textView2"
-        android:layout_marginTop="215dp"
-        android:text="I have no preference being a requester or a volunteer." />
+        android:layout_alignLeft="@+id/fromSpinner"
+        android:layout_below="@+id/fromSpinner"
+        android:entries="@array/Locations" />
 
 </RelativeLayout>
