@@ -9,6 +9,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.Spinner;
 
 /**
@@ -24,6 +25,7 @@ public class ClientFragment extends Fragment implements OnClickListener {
 	 */
 	private SubmitCallbackListener activity;
 	Spinner fromSpinner, toSpinner;
+	RadioButton radiobutton1, radiobutton2, radiobutton3;
 	
 	
 	/**
@@ -65,7 +67,9 @@ public class ClientFragment extends Fragment implements OnClickListener {
 		
 		// TODO: import your Views from the layout here. See example in
 		// ServerFragment.
-		
+		radiobutton1 = (RadioButton) view.findViewById(R.id.radioButton1);
+		radiobutton2 = (RadioButton) view.findViewById(R.id.radioButton2);
+		radiobutton3 = (RadioButton) view.findViewById(R.id.radioButton3);
 		fromSpinner = (Spinner) view.findViewById(R.id.fromSpinner);
 		toSpinner = (Spinner) view.findViewById(R.id.toSpinner);
 
@@ -78,5 +82,29 @@ public class ClientFragment extends Fragment implements OnClickListener {
 	@Override
 	public void onClick(View v) {
 		this.activity.onSubmit();
+	}
+		
+	public void radio1Clicked(View view)
+	{
+	    // Note that I have unchecked  radiobuttons except the one
+	    // which is clicked/checked by user
+	    radiobutton2.setChecked(false);
+	    radiobutton3.setChecked(false);
+	}
+
+	public void radio2Clicked(View view)
+	{
+	    // Note that I have unchecked  radiobuttons except the one
+	    // which is clicked/checked by user
+	    radiobutton1.setChecked(false);
+	    radiobutton3.setChecked(false);
+	}
+
+	public void radio3Clicked(View view)
+	{
+	    // Note that I have unchecked  radiobuttons except the one
+	    // which is clicked/checked by user
+	    radiobutton2.setChecked(false);
+	    radiobutton1.setChecked(false);
 	}
 }
