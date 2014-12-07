@@ -3,7 +3,10 @@ package edu.purdue.YL;
 import android.annotation.SuppressLint;
 import android.app.ActionBar;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.FragmentTransaction;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
@@ -109,6 +112,7 @@ public class MainActivity extends Activity implements SubmitCallbackListener,
 	/**
 	 * Callback function called when the user click on the submit button.
 	 */
+	@SuppressWarnings("deprecation")
 	@Override
 	public void onSubmit() {
 		// TODO: Get client info via client fragment
@@ -120,11 +124,26 @@ public class MainActivity extends Activity implements SubmitCallbackListener,
 				.getString(R.string.default_port)));
 		// TODO: sanity check the results of the previous two dialogs
 		boolean canRun = true;
-		if(!checkHost(host))
+		if (!checkHost(host))
 			canRun = false;
-		if(!checkPort(port))
+		if (!checkPort(port))
 			canRun = false;
 		// TODO: Need to get command from client fragment
+		if (!canRun) {
+			AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+			alertDialog.setTitle("Alert");
+			alertDialog
+					.setMessage("The host or port are incorrect. Check server settings.");
+			alertDialog.setButton("Okay",
+					new DialogInterface.OnClickListener() {
+						public void onClick(DialogInterface dialog, int which) {
+							dialog.dismiss();
+						}
+					});
+			alertDialog.show();
+
+			return;
+		}
 		String command = this.getResources()
 				.getString(R.string.default_command);
 
@@ -153,13 +172,15 @@ public class MainActivity extends Activity implements SubmitCallbackListener,
 	}
 
 	private boolean checkHost(String str) {
-		String[] data = str.split(".");
+		String[] data = str.split("\\.");
+		System.out.println(data.length);
 		if (data.length != 4)
 			return false;
 		for (String a : data) {
 			try {
 				int temp = Integer.parseInt(a);
-				if (!(temp >= 0 && temp <= 255))
+				System.out.println(temp);
+				if (temp < 0 || temp > 255)
 					return false;
 			} catch (Exception ex) {
 				return false;
