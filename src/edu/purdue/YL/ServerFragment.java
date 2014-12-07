@@ -53,7 +53,6 @@ public class ServerFragment extends Fragment {
 
 		this.host = (EditText) view.findViewById(R.id.et_host);
 		this.port = (EditText) view.findViewById(R.id.et_port);
-		this.serverButton = (Button) view.findViewById(R.id.serverButton);
 
 		return view;
 	}

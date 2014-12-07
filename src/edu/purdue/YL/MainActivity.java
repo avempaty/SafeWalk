@@ -119,11 +119,11 @@ public class MainActivity extends Activity implements SubmitCallbackListener,
 		int port = this.serverFragment.getPort(Integer.parseInt(getResources()
 				.getString(R.string.default_port)));
 		// TODO: sanity check the results of the previous two dialogs
-		
+		boolean canRun = true;
 		if(!checkHost(host))
-			return;
+			canRun = false;
 		if(!checkPort(port))
-			return;
+			canRun = false;
 		// TODO: Need to get command from client fragment
 		String command = this.getResources()
 				.getString(R.string.default_command);

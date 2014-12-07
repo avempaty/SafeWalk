@@ -14,14 +14,40 @@
         android:id="@+id/bu_start_over"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/margin_bigline"
+        android:layout_marginBottom="67dp"
+        android:background="@color/salmon"
         android:gravity="center"
         android:minHeight="60dp"
         android:minWidth="150dp"
         android:padding="@dimen/padding"
-        android:background="@color/salmon"
         android:text="@string/start_over"
         android:textColor="@color/white" />
+
+    <TextView
+        android:id="@+id/serverObtained"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="62dp"
+        android:layout_marginTop="59dp" />
+
+    <TextView
+        android:id="@+id/clientInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/serverObtained"
+        android:layout_below="@+id/serverObtained"
+        android:layout_marginTop="46dp" />
+
+    <TextView
+        android:id="@+id/serverResponse"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/clientInfo"
+        android:layout_below="@+id/clientInfo"
+        android:layout_marginTop="50dp" />
 
 </RelativeLayout>
