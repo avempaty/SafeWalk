@@ -8,6 +8,7 @@ import android.app.FragmentTransaction;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
@@ -116,7 +117,6 @@ public class MainActivity extends Activity implements SubmitCallbackListener,
 	@Override
 	public void onSubmit() {
 		// TODO: Get client info via client fragment
-<<<<<<< HEAD
 
 		String name = this.clientFragment.getName();
 		int priority = 0;
@@ -131,16 +131,11 @@ public class MainActivity extends Activity implements SubmitCallbackListener,
 			priority = 2;
 			break;
 		}
+		
 
 		String from = this.clientFragment.getFrom();
 		String to = this.clientFragment.getTo();
 
-=======
-		String person = this.clientFragment.person.toString();
-		int type0 = this.clientFragment.radiobutton1.getId();
-		int type1 = this.clientFragment.radiobutton2.getId();
-		int type2 = this.clientFragment.radiobutton3.getId();
->>>>>>> 289bd8ceeecf375446a0d73996fc5367c5778ba0
 		// Server info
 		String host = this.serverFragment.getHost(getResources().getString(
 				R.string.default_host));
@@ -152,7 +147,6 @@ public class MainActivity extends Activity implements SubmitCallbackListener,
 			canRun = false;
 		if (!checkPort(port))
 			canRun = false;
-
 		if (name == null) {
 			AlertDialog alertDialog = new AlertDialog.Builder(this).create();
 			alertDialog.setTitle("Alert");
@@ -197,7 +191,7 @@ public class MainActivity extends Activity implements SubmitCallbackListener,
 			alertDialog.show();
 			return;
 		}
-		
+		Log.i("Made it", "" + 1);
 		if(to.equals("*") && priority != 2)
 		{
 			AlertDialog alertDialog = new AlertDialog.Builder(this).create();
@@ -229,11 +223,10 @@ public class MainActivity extends Activity implements SubmitCallbackListener,
 
 			return;
 		}
-		
 		String command = name + "," + from + "," + to + "," + priority;
 
 		FragmentTransaction ft = getFragmentManager().beginTransaction();
-
+		Log.i("Made it", "" + 3);
 		this.title.setText(getResources().getString(R.string.match));
 		this.left.setVisibility(View.INVISIBLE);
 		this.right.setVisibility(View.INVISIBLE);
@@ -242,7 +235,6 @@ public class MainActivity extends Activity implements SubmitCallbackListener,
 		// the match fragment
 		MatchFragment frag = MatchFragment.newInstance(this, host, port,
 				command);
-
 		ft.replace(R.id.fl_main, frag);
 		ft.commit();
 	}

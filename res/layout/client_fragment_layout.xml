@@ -67,7 +67,7 @@
         android:layout_alignRight="@+id/radioGroup1"
         android:layout_below="@+id/radioGroup1"
         android:layout_marginTop="50dp"
-        android:entries="@array/From" />
+        android:entries="@array/Locations" />
 
     <Spinner
         android:id="@+id/toSpinner"
@@ -75,7 +75,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/textView3"
         android:layout_below="@+id/textView4"
-        android:entries="@array/To" />
+        android:entries="@array/Locations" />
 
     <TextView
         android:id="@+id/textView3"

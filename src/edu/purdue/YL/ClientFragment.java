@@ -3,6 +3,7 @@ package edu.purdue.YL;
 import android.app.Fragment;
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -12,7 +13,6 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
-import android.widget.TextView;
 
 /**
  * This fragment is the "page" where the user inputs information about the
@@ -28,14 +28,9 @@ public class ClientFragment extends Fragment implements OnClickListener {
 	private SubmitCallbackListener activity;
 	Spinner fromSpinner, toSpinner;
 	RadioButton radiobutton1, radiobutton2, radiobutton3;
-<<<<<<< HEAD
 	EditText name;
 	RadioGroup radioButtonGroup;
 	
-=======
-	TextView preferences, name;
-	EditText person;
->>>>>>> 289bd8ceeecf375446a0d73996fc5367c5778ba0
 	
 	/**
 	 * Creates a ProfileFragment
@@ -83,11 +78,7 @@ public class ClientFragment extends Fragment implements OnClickListener {
 		radiobutton3 = (RadioButton) view.findViewById(R.id.radioButton3);
 		fromSpinner = (Spinner) view.findViewById(R.id.fromSpinner);
 		toSpinner = (Spinner) view.findViewById(R.id.toSpinner);
-		preferences = (TextView) view.findViewById(R.id.textView2);
-		name = (TextView) view.findViewById(R.id.serverObtained);
-		person = (EditText) view.findViewById(R.id.editText1);
-		
-		
+
 		return view;
 	}
 
@@ -100,7 +91,7 @@ public class ClientFragment extends Fragment implements OnClickListener {
 	}
 	
 	public String getName() {
-		String data = this.name.toString();
+		String data = this.name.getText().toString();
 		if(data == null)
 			return null;
 		else 
@@ -125,16 +116,14 @@ public class ClientFragment extends Fragment implements OnClickListener {
 	public String getFrom()
 	{
 		String from = fromSpinner.getSelectedItem().toString();
-		return from.substring(0,from.indexOf("\\s+"));
+		String[] array = from.split("\\s+");
+		return array[0];
 	}
 	
 	public String getTo()
 	{
 		String to = toSpinner.getSelectedItem().toString();
-		return to.substring(0,to.indexOf("\\s+"));
-	}
-	public void person(View view) 
-	{
-		String personName = person.getText().toString();
+		String[] array = to.split("\\s+");
+		return array[0];
 	}
 }
