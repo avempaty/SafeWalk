@@ -73,7 +73,11 @@ public class ClientFragment extends Fragment implements OnClickListener {
 		radiobutton3 = (RadioButton) view.findViewById(R.id.radioButton3);
 		fromSpinner = (Spinner) view.findViewById(R.id.fromSpinner);
 		toSpinner = (Spinner) view.findViewById(R.id.toSpinner);
-
+		preferences = (TextView) view.findViewById(R.id.textView2);
+		name = (TextView) view.findViewById(R.id.serverObtained);
+		person = (EditText) view.findViewById(R.id.editText1);
+		
+		
 		return view;
 	}
 
@@ -107,5 +111,9 @@ public class ClientFragment extends Fragment implements OnClickListener {
 	    // which is clicked/checked by user
 	    radiobutton2.setChecked(false);
 	    radiobutton1.setChecked(false);
+	}
+	public void person(View view) 
+	{
+		String personName = person.getText().toString();
 	}
 }
