@@ -1,6 +1,11 @@
 package edu.purdue.YL;
 
+import java.io.BufferedReader;
 import java.io.Closeable;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.net.Socket;
 
 import android.app.Fragment;
 import android.util.Log;
@@ -45,6 +50,7 @@ public class MatchFragment extends Fragment implements OnClickListener {
 
 	// TODO: your own class fields here
 	TextView serverStatus, partner, clientInfo, serverResponse;
+
 	// Class methods
 	/**
 	 * Creates a MatchFragment
@@ -97,12 +103,12 @@ public class MatchFragment extends Fragment implements OnClickListener {
 
 		// TODO: import your Views from the layout here. See example in
 		// ServerFragment.
-		
+
 		serverStatus = (TextView) view.findViewById(R.id.serverObtained);
 		clientInfo = (TextView) view.findViewById(R.id.clientInfo);
 		serverResponse = (TextView) view.findViewById(R.id.serverResponse);
 		partner = (TextView) view.findViewById(R.id.partner);
-		
+
 		/**
 		 * Launch the AsyncTask
 		 */
@@ -129,6 +135,8 @@ public class MatchFragment extends Fragment implements OnClickListener {
 	}
 
 	class Client extends AsyncTask<String, String, String> implements Closeable {
+		Socket s;
+		String result = null;
 
 		/**
 		 * NOTE: you can access MatchFragment field from this class:
@@ -152,11 +160,39 @@ public class MatchFragment extends Fragment implements OnClickListener {
 
 			Log.d(DEBUG_TAG, String.format(
 					"The Client will send the command: %s", command));
-
-			return "";
+			try {
+				Log.i("Back", "About to connect");
+				s = new Socket(host, port);
+				Log.i("Back", "found server");
+				PrintWriter out = new PrintWriter(s.getOutputStream(), true);
+				BufferedReader in = new BufferedReader(new InputStreamReader(
+						s.getInputStream()));
+				Log.i("Back", "Created p&b");
+				out.println(command);
+				Log.i("Back", "Sent command");
+				publishProgress();
+				for (;;) {
+					result = in.readLine();
+					if (result.startsWith("RESPONSE: "))
+						out.println(":ACK");
+					break;
+				}
+			} catch (IOException e) {
+				Log.i("Excetion", "" + 1);
+				result = "the server is not available";
+				publishProgress();
+			}
+			return result;
 		}
+
 		public void close() {
-                    // TODO: Clean up the client
+			// TODO: Clean up the client
+			try {
+				s.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 
 		/**
@@ -172,6 +208,7 @@ public class MatchFragment extends Fragment implements OnClickListener {
 		 */
 		@Override
 		protected void onPreExecute() {
+
 		}
 
 		/**
@@ -187,6 +224,26 @@ public class MatchFragment extends Fragment implements OnClickListener {
 		 */
 		@Override
 		protected void onProgressUpdate(String... result) {
+			Log.i("progress", "1");
+			if (s != null && s.isConnected()) {
+				Log.i("progress", "connected");
+				serverStatus.setText("Server is connected");
+				clientInfo.setText("Sending: " + command);
+				Log.i("progress", "set text 1");
+				if (result != null) {
+					for(String s: result)
+						Log.i("progress",s);
+					serverResponse.setText("A match was found.");
+					partner.setText("Got it");
+				} else {
+					Log.i("progress","result null");
+					serverResponse.setText("Waiting on a match");
+				}
+			} else
+			{
+				Log.i("progress", "Server not available");
+				serverStatus.setText("Server is not available.");
+			}
 		}
 	}
 
