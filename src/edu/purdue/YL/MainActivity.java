@@ -131,7 +131,6 @@ public class MainActivity extends Activity implements SubmitCallbackListener,
 			priority = 2;
 			break;
 		}
-		
 
 		String from = this.clientFragment.getFrom();
 		String to = this.clientFragment.getTo();
@@ -164,8 +163,7 @@ public class MainActivity extends Activity implements SubmitCallbackListener,
 		if (from.equals("*")) {
 			AlertDialog alertDialog = new AlertDialog.Builder(this).create();
 			alertDialog.setTitle("Alert");
-			alertDialog
-					.setMessage("From cannot be *");
+			alertDialog.setMessage("From cannot be *");
 			alertDialog.setButton("Okay",
 					new DialogInterface.OnClickListener() {
 						public void onClick(DialogInterface dialog, int which) {
@@ -175,13 +173,11 @@ public class MainActivity extends Activity implements SubmitCallbackListener,
 			alertDialog.show();
 			return;
 		}
-		
-		if(to.equals(from))
-		{
+
+		if (to.equals(from)) {
 			AlertDialog alertDialog = new AlertDialog.Builder(this).create();
 			alertDialog.setTitle("Alert");
-			alertDialog
-					.setMessage("To and from must be different");
+			alertDialog.setMessage("To and from must be different");
 			alertDialog.setButton("Okay",
 					new DialogInterface.OnClickListener() {
 						public void onClick(DialogInterface dialog, int which) {
@@ -192,12 +188,10 @@ public class MainActivity extends Activity implements SubmitCallbackListener,
 			return;
 		}
 		Log.i("Made it", "" + 1);
-		if(to.equals("*") && priority != 2)
-		{
+		if (to.equals("*") && priority != 2) {
 			AlertDialog alertDialog = new AlertDialog.Builder(this).create();
 			alertDialog.setTitle("Alert");
-			alertDialog
-					.setMessage("Change settings to having no preference");
+			alertDialog.setMessage("Change settings to having no preference");
 			alertDialog.setButton("Okay",
 					new DialogInterface.OnClickListener() {
 						public void onClick(DialogInterface dialog, int which) {
@@ -249,21 +243,10 @@ public class MainActivity extends Activity implements SubmitCallbackListener,
 	}
 
 	private boolean checkHost(String str) {
-		String[] data = str.split("\\.");
-		System.out.println(data.length);
-		if (data.length != 4)
+		if (str == null || str.length() == 0 || str.indexOf("\\s+") != -1)
 			return false;
-		for (String a : data) {
-			try {
-				int temp = Integer.parseInt(a);
-				System.out.println(temp);
-				if (temp < 0 || temp > 255)
-					return false;
-			} catch (Exception ex) {
-				return false;
-			}
-		}
-		return true;
+		else
+			return true;
 	}
 
 	private boolean checkPort(int port) {

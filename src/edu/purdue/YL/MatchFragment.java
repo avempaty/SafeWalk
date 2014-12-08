@@ -182,6 +182,7 @@ public class MatchFragment extends Fragment implements OnClickListener {
 				result = "the server is not available";
 				publishProgress();
 			}
+			publishProgress();
 			return result;
 		}
 
@@ -223,7 +224,7 @@ public class MatchFragment extends Fragment implements OnClickListener {
 		 * function.
 		 */
 		@Override
-		protected void onProgressUpdate(String... result) {
+		protected void onProgressUpdate(String... response) {
 			Log.i("progress", "1");
 			if (s != null && s.isConnected()) {
 				Log.i("progress", "connected");
@@ -231,16 +232,14 @@ public class MatchFragment extends Fragment implements OnClickListener {
 				clientInfo.setText("Sending: " + command);
 				Log.i("progress", "set text 1");
 				if (result != null) {
-					for(String s: result)
-						Log.i("progress",s);
+					Log.i("progress", result);
 					serverResponse.setText("A match was found.");
-					partner.setText("Got it");
+					partner.setText(result);
 				} else {
-					Log.i("progress","result null");
+					Log.i("progress", "result null");
 					serverResponse.setText("Waiting on a match");
 				}
-			} else
-			{
+			} else {
 				Log.i("progress", "Server not available");
 				serverStatus.setText("Server is not available.");
 			}
