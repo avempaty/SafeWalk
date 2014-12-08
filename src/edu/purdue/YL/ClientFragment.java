@@ -27,7 +27,8 @@ public class ClientFragment extends Fragment implements OnClickListener {
 	private SubmitCallbackListener activity;
 	Spinner fromSpinner, toSpinner;
 	RadioButton radiobutton1, radiobutton2, radiobutton3;
-	
+	TextView preferences, name;
+	EditText person;
 	
 	/**
 	 * Creates a ProfileFragment

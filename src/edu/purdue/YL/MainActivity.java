@@ -116,7 +116,10 @@ public class MainActivity extends Activity implements SubmitCallbackListener,
 	@Override
 	public void onSubmit() {
 		// TODO: Get client info via client fragment
-
+		String person = this.clientFragment.person.toString();
+		int type0 = this.clientFragment.radiobutton1.getId();
+		int type1 = this.clientFragment.radiobutton2.getId();
+		int type2 = this.clientFragment.radiobutton3.getId();
 		// Server info
 		String host = this.serverFragment.getHost(getResources().getString(
 				R.string.default_host));
