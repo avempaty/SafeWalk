@@ -117,6 +117,23 @@ public class MainActivity extends Activity implements SubmitCallbackListener,
 	public void onSubmit() {
 		// TODO: Get client info via client fragment
 
+		String name = this.clientFragment.getName();
+		int priority = 0;
+		switch (this.clientFragment.getPriority()) {
+		case 0:
+			priority = 0;
+			break;
+		case 1:
+			priority = 1;
+			break;
+		case 2:
+			priority = 2;
+			break;
+		}
+
+		String from = this.clientFragment.getFrom();
+		String to = this.clientFragment.getTo();
+
 		// Server info
 		String host = this.serverFragment.getHost(getResources().getString(
 				R.string.default_host));
@@ -128,6 +145,67 @@ public class MainActivity extends Activity implements SubmitCallbackListener,
 			canRun = false;
 		if (!checkPort(port))
 			canRun = false;
+
+		if (name == null) {
+			AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+			alertDialog.setTitle("Alert");
+			alertDialog.setMessage("Please fix name.");
+			alertDialog.setButton("Okay",
+					new DialogInterface.OnClickListener() {
+						public void onClick(DialogInterface dialog, int which) {
+							dialog.dismiss();
+						}
+					});
+			alertDialog.show();
+			return;
+		}
+
+		if (from.equals("*")) {
+			AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+			alertDialog.setTitle("Alert");
+			alertDialog
+					.setMessage("From cannot be *");
+			alertDialog.setButton("Okay",
+					new DialogInterface.OnClickListener() {
+						public void onClick(DialogInterface dialog, int which) {
+							dialog.dismiss();
+						}
+					});
+			alertDialog.show();
+			return;
+		}
+		
+		if(to.equals(from))
+		{
+			AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+			alertDialog.setTitle("Alert");
+			alertDialog
+					.setMessage("To and from must be different");
+			alertDialog.setButton("Okay",
+					new DialogInterface.OnClickListener() {
+						public void onClick(DialogInterface dialog, int which) {
+							dialog.dismiss();
+						}
+					});
+			alertDialog.show();
+			return;
+		}
+		
+		if(to.equals("*") && priority != 2)
+		{
+			AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+			alertDialog.setTitle("Alert");
+			alertDialog
+					.setMessage("Change settings to having no preference");
+			alertDialog.setButton("Okay",
+					new DialogInterface.OnClickListener() {
+						public void onClick(DialogInterface dialog, int which) {
+							dialog.dismiss();
+						}
+					});
+			alertDialog.show();
+			return;
+		}
 		// TODO: Need to get command from client fragment
 		if (!canRun) {
 			AlertDialog alertDialog = new AlertDialog.Builder(this).create();
@@ -144,8 +222,8 @@ public class MainActivity extends Activity implements SubmitCallbackListener,
 
 			return;
 		}
-		String command = this.getResources()
-				.getString(R.string.default_command);
+		
+		String command = name + "," + from + "," + to + "," + priority;
 
 		FragmentTransaction ft = getFragmentManager().beginTransaction();
 

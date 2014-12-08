@@ -1,6 +1,7 @@
 package edu.purdue.YL;
 
 import java.io.Closeable;
+
 import android.app.Fragment;
 import android.util.Log;
 import android.view.View.OnClickListener;
@@ -9,6 +10,7 @@ import android.os.AsyncTask;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 /**
  * This fragment is the "page" where the application display the log from the
@@ -42,7 +44,7 @@ public class MatchFragment extends Fragment implements OnClickListener {
 	private String command;
 
 	// TODO: your own class fields here
-
+	TextView serverStatus, partner, clientInfo, serverResponse;
 	// Class methods
 	/**
 	 * Creates a MatchFragment
@@ -95,7 +97,12 @@ public class MatchFragment extends Fragment implements OnClickListener {
 
 		// TODO: import your Views from the layout here. See example in
 		// ServerFragment.
-
+		
+		serverStatus = (TextView) view.findViewById(R.id.serverObtained);
+		clientInfo = (TextView) view.findViewById(R.id.clientInfo);
+		serverResponse = (TextView) view.findViewById(R.id.serverResponse);
+		partner = (TextView) view.findViewById(R.id.partner);
+		
 		/**
 		 * Launch the AsyncTask
 		 */

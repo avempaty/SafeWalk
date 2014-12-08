@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 
 /**
@@ -26,6 +27,8 @@ public class ClientFragment extends Fragment implements OnClickListener {
 	private SubmitCallbackListener activity;
 	Spinner fromSpinner, toSpinner;
 	RadioButton radiobutton1, radiobutton2, radiobutton3;
+	EditText name;
+	RadioGroup radioButtonGroup;
 	
 	
 	/**
@@ -67,6 +70,8 @@ public class ClientFragment extends Fragment implements OnClickListener {
 		
 		// TODO: import your Views from the layout here. See example in
 		// ServerFragment.
+		name = (EditText) view.findViewById(R.id.editText1);
+		radioButtonGroup = (RadioGroup) view.findViewById(R.id.radioGroup1);
 		radiobutton1 = (RadioButton) view.findViewById(R.id.radioButton1);
 		radiobutton2 = (RadioButton) view.findViewById(R.id.radioButton2);
 		radiobutton3 = (RadioButton) view.findViewById(R.id.radioButton3);
@@ -83,28 +88,39 @@ public class ClientFragment extends Fragment implements OnClickListener {
 	public void onClick(View v) {
 		this.activity.onSubmit();
 	}
-		
-	public void radio1Clicked(View view)
-	{
-	    // Note that I have unchecked  radiobuttons except the one
-	    // which is clicked/checked by user
-	    radiobutton2.setChecked(false);
-	    radiobutton3.setChecked(false);
+	
+	public String getName() {
+		String data = this.name.toString();
+		if(data == null)
+			return null;
+		else 
+		{
+			if(data.indexOf(",") != -1 || data.length() == 1)
+				return null;
+		}
+		return data;
 	}
 
-	public void radio2Clicked(View view)
-	{
-	    // Note that I have unchecked  radiobuttons except the one
-	    // which is clicked/checked by user
-	    radiobutton1.setChecked(false);
-	    radiobutton3.setChecked(false);
+	/**
+	 * Returns the port enter by the user or the default value if the user
+	 * didn't open the fragment.
+	 */
+	public int getPriority() {
+		int radioButtonID = radioButtonGroup.getCheckedRadioButtonId();
+		View radioButton = radioButtonGroup.findViewById(radioButtonID);
+		int idx = radioButtonGroup.indexOfChild(radioButton);
+		return idx;
 	}
-
-	public void radio3Clicked(View view)
+	
+	public String getFrom()
 	{
-	    // Note that I have unchecked  radiobuttons except the one
-	    // which is clicked/checked by user
-	    radiobutton2.setChecked(false);
-	    radiobutton1.setChecked(false);
+		String from = fromSpinner.getSelectedItem().toString();
+		return from.substring(0,from.indexOf("\\s+"));
+	}
+	
+	public String getTo()
+	{
+		String to = toSpinner.getSelectedItem().toString();
+		return to.substring(0,to.indexOf("\\s+"));
 	}
 }

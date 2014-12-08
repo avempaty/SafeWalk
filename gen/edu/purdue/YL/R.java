@@ -55,25 +55,23 @@ public final class R {
         public static final int bu_submit=0x7f0a0004;
         public static final int clientInfo=0x7f0a0011;
         public static final int editText1=0x7f0a000c;
-        public static final int et_host=0x7f0a0017;
-        public static final int et_port=0x7f0a0019;
+        public static final int et_host=0x7f0a0015;
+        public static final int et_port=0x7f0a0017;
         public static final int fl_main=0x7f0a0003;
         public static final int fromSpinner=0x7f0a000a;
+        public static final int partner=0x7f0a0013;
         public static final int radioButton1=0x7f0a000d;
         public static final int radioButton2=0x7f0a000f;
         public static final int radioButton3=0x7f0a000e;
         public static final int radioGroup1=0x7f0a000b;
         public static final int serverObtained=0x7f0a0006;
         public static final int serverResponse=0x7f0a0012;
-        public static final int tableRow1=0x7f0a0013;
-        public static final int tableRow2=0x7f0a0014;
-        public static final int tableRow3=0x7f0a0015;
         public static final int textView2=0x7f0a0005;
         public static final int textView3=0x7f0a0009;
         public static final int textView4=0x7f0a0007;
         public static final int toSpinner=0x7f0a0008;
-        public static final int tv_host=0x7f0a0016;
-        public static final int tv_port=0x7f0a0018;
+        public static final int tv_host=0x7f0a0014;
+        public static final int tv_port=0x7f0a0016;
         public static final int tv_title=0x7f0a0001;
     }
     public static final class layout {
