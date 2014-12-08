@@ -189,6 +189,8 @@ public class MatchFragment extends Fragment implements OnClickListener {
 		public void close() {
 			// TODO: Clean up the client
 			try {
+				if(s == null)
+					return;
 				s.close();
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
