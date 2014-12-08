@@ -210,7 +210,7 @@ public class MainActivity extends Activity implements SubmitCallbackListener,
 			alertDialog.show();
 			return;
 		}
-		Log.i("Made it", "" + 1);
+		//Log.i("Made it", "" + 1);
 		if (to.equals("*") && priority != 2) {
 			AlertDialog alertDialog = new AlertDialog.Builder(this).create();
 			alertDialog.setTitle("Alert");
@@ -230,7 +230,7 @@ public class MainActivity extends Activity implements SubmitCallbackListener,
 		String command = name + "," + from + "," + to + "," + priority;
 
 		FragmentTransaction ft = getFragmentManager().beginTransaction();
-		Log.i("Made it", "" + 3);
+		//Log.i("Made it", "" + 3);
 		this.title.setText(getResources().getString(R.string.match));
 		this.left.setVisibility(View.INVISIBLE);
 		this.right.setVisibility(View.INVISIBLE);

@@ -18,7 +18,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 /**
- * This fragment is the "page" where the application display the log from the
+ * This fragment is the "page" where the application display the //Log from the
  * server and wait for a match.
  *
  * @author YL
@@ -142,7 +142,7 @@ public class MatchFragment extends Fragment implements OnClickListener {
 		 * NOTE: you can access MatchFragment field from this class:
 		 * 
 		 * Example: The statement in doInBackground will print the message in
-		 * the Eclipse LogCat view.
+		 * the Eclipse //LogCat view.
 		 */
 
 		/**
@@ -161,15 +161,15 @@ public class MatchFragment extends Fragment implements OnClickListener {
 			Log.d(DEBUG_TAG, String.format(
 					"The Client will send the command: %s", command));
 			try {
-				Log.i("Back", "About to connect");
+				//Log.i("Back", "About to connect");
 				s = new Socket(host, port);
-				Log.i("Back", "found server");
+				//Log.i("Back", "found server");
 				PrintWriter out = new PrintWriter(s.getOutputStream(), true);
 				BufferedReader in = new BufferedReader(new InputStreamReader(
 						s.getInputStream()));
-				Log.i("Back", "Created p&b");
+				//Log.i("Back", "Created p&b");
 				out.println(command);
-				Log.i("Back", "Sent command");
+				//Log.i("Back", "Sent command");
 				publishProgress();
 				for (;;) {
 					result = in.readLine();
@@ -178,7 +178,7 @@ public class MatchFragment extends Fragment implements OnClickListener {
 					break;
 				}
 			} catch (IOException e) {
-				Log.i("Excetion", "" + 1);
+				//Log.i("Exception", "" + 1);
 				result = "the server is not available";
 				publishProgress();
 			}
@@ -227,22 +227,22 @@ public class MatchFragment extends Fragment implements OnClickListener {
 		 */
 		@Override
 		protected void onProgressUpdate(String... response) {
-			Log.i("progress", "1");
+			//Log.i("progress", "1");
 			if (s != null && s.isConnected()) {
-				Log.i("progress", "connected");
+				//Log.i("progress", "connected");
 				serverStatus.setText("Server is connected");
 				clientInfo.setText("Sending: " + command);
-				Log.i("progress", "set text 1");
+				//Log.i("progress", "set text 1");
 				if (result != null) {
-					Log.i("progress", result);
+					//Log.i("progress", result);
 					serverResponse.setText("A match was found.");
 					partner.setText(result);
 				} else {
-					Log.i("progress", "result null");
+					//Log.i("progress", "result null");
 					serverResponse.setText("Waiting on a match");
 				}
 			} else {
-				Log.i("progress", "Server not available");
+				//Log.i("progress", "Server not available");
 				serverStatus.setText("Server is not available.");
 			}
 		}
