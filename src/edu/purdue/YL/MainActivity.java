@@ -141,11 +141,34 @@ public class MainActivity extends Activity implements SubmitCallbackListener,
 		int port = this.serverFragment.getPort(Integer.parseInt(getResources()
 				.getString(R.string.default_port)));
 		// TODO: sanity check the results of the previous two dialogs
-		boolean canRun = true;
-		if (!checkHost(host))
-			canRun = false;
-		if (!checkPort(port))
-			canRun = false;
+		
+		if (!checkHost(host)) {
+			AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+			alertDialog.setTitle("Alert");
+			alertDialog.setMessage("Not correct Host. Try again.");
+			alertDialog.setButton("Okay",
+					new DialogInterface.OnClickListener() {
+						public void onClick(DialogInterface dialog, int which) {
+							dialog.dismiss();
+						}
+					});
+			alertDialog.show();
+			return;
+		}
+		if (!checkPort(port)) {
+			AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+			alertDialog.setTitle("Alert");
+			alertDialog.setMessage("Not valid port. Try again.");
+			alertDialog.setButton("Okay",
+					new DialogInterface.OnClickListener() {
+						public void onClick(DialogInterface dialog, int which) {
+							dialog.dismiss();
+						}
+					});
+			alertDialog.show();
+			return;
+		}
+			
 		if (name == null) {
 			AlertDialog alertDialog = new AlertDialog.Builder(this).create();
 			alertDialog.setTitle("Alert");
@@ -202,21 +225,8 @@ public class MainActivity extends Activity implements SubmitCallbackListener,
 			return;
 		}
 		// TODO: Need to get command from client fragment
-		if (!canRun) {
-			AlertDialog alertDialog = new AlertDialog.Builder(this).create();
-			alertDialog.setTitle("Alert");
-			alertDialog
-					.setMessage("The host or port are incorrect. Check server settings.");
-			alertDialog.setButton("Okay",
-					new DialogInterface.OnClickListener() {
-						public void onClick(DialogInterface dialog, int which) {
-							dialog.dismiss();
-						}
-					});
-			alertDialog.show();
-
-			return;
-		}
+		
+		
 		String command = name + "," + from + "," + to + "," + priority;
 
 		FragmentTransaction ft = getFragmentManager().beginTransaction();
