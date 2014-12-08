@@ -9,6 +9,8 @@ import android.os.Bundle;
 import android.os.AsyncTask;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
@@ -94,7 +96,7 @@ public class MatchFragment extends Fragment implements OnClickListener {
 		 * button.
 		 */
 		view.findViewById(R.id.bu_start_over).setOnClickListener(this);
-
+		
 		// TODO: import your Views from the layout here. See example in
 		// ServerFragment.
 		
